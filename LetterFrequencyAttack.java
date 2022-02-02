@@ -90,7 +90,7 @@ class Heap
 			heapify(max);
 		}
 	}
-	public int getMaxFrequency()
+	public int getMaxFrequencyAlphabet()
 	{
 		Alphabet result = frequencies[0];
 		frequencies[0] = frequencies[heapSize-1];
@@ -162,7 +162,7 @@ class LetterFrequencyAttack
 		Heap heap = new Heap(frequencies, letterOrder);
 		for (i = 0; i < k; ++i)
 		{
-			maxFrequency = heap.getMaxFrequency();
+			maxFrequency = heap.getMaxFrequencyAlphabet();
 			diff = (letterOrder[i]-'a')-maxFrequency;
 			temp = new StringBuffer("");
 			for (j = 0; j < cipherText.length(); ++j)
