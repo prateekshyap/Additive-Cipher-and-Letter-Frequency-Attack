@@ -79,12 +79,14 @@ class CaesarCipher
 		temp = new StringBuffer("");
 		for (int i = 0; i < plainText.length(); ++i)
 		{
-			if (plainText.charAt(i) >= 'a' && plainText.charAt(i) <= 'z')
+			if (plainText.charAt(i) >= 'a' && plainText.charAt(i) <= 'z') //encrypt for lower case letters
 				temp.append((char)((((plainText.charAt(i)-'a')+k)%26)+'a'));
-			else if (plainText.charAt(i) >= 'A' && plainText.charAt(i) <= 'Z')
+			else if (plainText.charAt(i) >= 'A' && plainText.charAt(i) <= 'Z') //encrypt for upper case letters
 				temp.append((char)((((plainText.charAt(i)-'A')+k)%26)+'A'));
-			else temp.append(plainText.charAt(i));
+			else temp.append(plainText.charAt(i)); //attach other characters as it is
 		}
+
+		//print the cipher text
 		cipherText = temp.toString();
 		System.out.println();
 		System.out.println("k value: "+k);
@@ -94,20 +96,22 @@ class CaesarCipher
 		temp = new StringBuffer("");
 		for (int i = 0; i < cipherText.length(); ++i)
 		{
-			if (cipherText.charAt(i) >= 'a' && cipherText.charAt(i) <= 'z')
+			if (cipherText.charAt(i) >= 'a' && cipherText.charAt(i) <= 'z') //decrypt for lower case letters
 			{
 				int tempValue = (((cipherText.charAt(i)-'a')-k)%26);
 				if (tempValue < 0) tempValue = 26+tempValue;
 				temp.append((char)(tempValue+'a'));
 			}
-			else if (cipherText.charAt(i) >= 'A' && cipherText.charAt(i) <= 'Z')
+			else if (cipherText.charAt(i) >= 'A' && cipherText.charAt(i) <= 'Z') //decrypt for upper case letters
 			{
 				int tempValue = (((cipherText.charAt(i)-'A')-k)%26);
 				if (tempValue < 0) tempValue = 26+tempValue;
 				temp.append((char)(tempValue+'A'));
 			}
-			else temp.append(cipherText.charAt(i));
+			else temp.append(cipherText.charAt(i)); //attach other characters as it is
 		}
+
+		//print the secrypted plain text
 		plainText = temp.toString();
 		System.out.println("After decryption-");
 		System.out.println(plainText);
